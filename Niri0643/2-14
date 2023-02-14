@@ -1,0 +1,32 @@
+from typing import List  # this is needed for one of the type hints 
+
+def order_helper(a, b):
+    '''
+    Returns a and b in order
+    '''
+
+    if a < b:
+        return (a, b)
+    else:
+        return (b, a)
+
+
+def pair_sum_count(numbers: List[int], A: int):
+    '''
+    Count the unique pairs in numbers that add up to A
+
+    Inputs:
+        - numbers: a list of numbers
+        - A: a number
+    Output:
+        - the count of unique pairs in the numbers list that add up to A
+    '''
+    counter = 0
+    for number_one in numbers:
+        for number_two in numbers:
+            in_order = order_helper(number_one, number_two)  # make a tuple with the numbers in order
+            if number_one + number_two == A:
+                counter += 1
+    return counter *.5
+
+pair_sum_count([1,2,3,4,5,6,7], 5)
